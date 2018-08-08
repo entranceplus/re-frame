@@ -1,4 +1,4 @@
-(defproject re-frame "0.10.6-SNAPSHOT"
+(defproject entranceplus/re-frame "0.10.6-SNAPSHOT"
   :description  "A Clojurescript MVC-like Framework For Writing SPAs Using Reagent."
   :url          "https://github.com/Day8/re-frame.git"
   :license      {:name "MIT"}
@@ -28,8 +28,13 @@
                                       :macosx  "open"
                                       :linux   "xdg-open"}}}
 
-  :deploy-repositories [["releases"  {:sign-releases false :url "https://clojars.org/repo"}]
-                        ["snapshots" {:sign-releases false :url "https://clojars.org/repo"}]]
+  :deploy-repositories [["releases"  {:sign-releases false
+                                      :url "https://clojars.org/repo"
+                                      :username :env/clojars_user
+                                      :password :env/clojars_pass}]
+                        ["snapshots" {:sign-releases false :url "https://clojars.org/repo"
+                                      :username :env/clojars_user
+                                      :password :env/clojars_pass}]]
 
   :release-tasks [["vcs" "assert-committed"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
